@@ -1,0 +1,646 @@
+<!---------------- PROFILE TEMPLATE ---------------->
+<div id="top-of-page"></div>
+
+<div ng-click="gotoTop()">
+    <md-button id="scroll-up" class="md-fab md-fab-bottom-right" aria-label="Top of page">
+        <md-icon>keyboard_arrow_up</md-icon>
+    </md-button>
+</div>
+
+<div class="tabsdemoDynamicHeight" id="profile-page-wrapper">
+
+    <md-content>
+        <md-tabs md-dynamic-height="" md-border-bottom="">
+
+            <!-----================----------- TAB ONE: PROFILE ----------================------>
+
+            <md-tab label="My Profile">
+                <md-content class="md-padding">
+                    <!-- <h1 class="md-display-2"></h1> -->
+
+                    <div class="carddemoBasicUsage">
+
+                        <!---------------- MY PROFILE ---------------->
+
+                        <md-content class="md-padding" layout-xs="column" layout="row">
+                            <div flex-xs="" flex-gt-xs="50" layout="column">
+                                <md-card id="top-left" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <!-- <span id="top-left-hl" class="md-headline"> -->
+                                                <span id="subhead-black" class="center">Profile Dashboard</span>
+                                            <!-- </span> -->
+                                            <span class="md-subhead">  </span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <p class="top-left-text"><b>{{ user.first_name }} {{ user.last_name }}'s Profile Page</b>
+                                            <br> Username: &nbsp; {{ user.username }}<br> Email: &nbsp; {{ user.email }}</p>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                            <!---------------- TOP RIGHT / NAV ---------------->
+
+                            <div flex-xs="" flex-gt-xs="50" layout="column">
+                                <md-card id="top-right" md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <!-- <span class="md-headline" id="top-right-hl"> -->
+                                            <span id="subhead-black" class="center">Navigation</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <!-- <p>{{ user.first_name }} {{ user.last_name }}'s Profile Page<br> Username: {{ user.username }}<br> Email:
+                                                        {{ user.email }}</p> -->
+                                        <md-card-actions layout="row" layout-align="center center">
+                                            <md-button class="md-raised md-primary">Wallets</md-button>
+                                            <md-button class="md-accent md-raised">Exchanges</md-button>
+                                            <md-button class="md-warn md-raised">Coins</md-button>
+                                        </md-card-actions>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                        </md-content>
+                    </div>
+
+
+
+                </md-content>
+            </md-tab>
+
+            <!-----================----------- TAB TWO: WALLETS ----------================------>
+
+            <md-tab label="My Wallets">
+                <md-content class="md-padding">
+                    <!-- <h1 class="md-display-2">Tab One</h1> -->
+
+                    <div class="carddemoBasicUsage">
+
+                        <!---------------- WALLET DASHBOARD ---------------->
+
+                        <md-content class="md-padding" layout-xs="column" layout="row">
+                            <div flex-xs="" flex-gt-xs="50" layout="column">
+                                <md-card id="top-left" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span id="top-left-hl" class="md-headline">Wallet Dashboard</span>
+                                            <span class="md-subhead">  </span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <p class="top-left-text"><b>{{ user.first_name }} {{ user.last_name }}'s Profile Page</b>
+                                            <br> Username: &nbsp; {{ user.username }}<br> Email: &nbsp; {{ user.email }}</p>
+                                    </md-card-content>
+                                </md-card>
+
+                                <!---------------- MY REVIEWS STREAM ---------------->
+
+                                <md-card id="bottom-left" md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span class="md-headline" id="bottom-left-hl">My Wallet Reviews</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-card-content layout="column" layout-align="space-between">
+                                        <md-list flex="" class="wallet-reviews" ng-repeat="walletReview in walletReviews">
+                                            <md-divider></md-divider>
+
+                                            <h3> {{ walletReview.wallet_name }} </h3>
+
+
+
+                                            <md-subheader class="md-no-sticky">Rated</md-subheader>
+                                            <md-list-item class="md-2-line">
+                                                <img ng-src="" class="md-avatar" alt="">
+                                                <div class="md-list-item-text">
+                                                    <h3>Rated</h3>
+                                                    <p> {{ walletReview.rating }} out of 5 </p>
+                                                </div>
+                                            </md-list-item>
+                                            <!-- TODO: {{order.date| date: 'MMM d, y h:mm:ss a'  -->
+
+                                            <md-subheader class="md-no-sticky">Review</md-subheader>
+                                            <md-list-item class="md-3-line md-long-text">
+                                                <img ng-src="" class="md-avatar" alt="">
+                                                <div class="md-list-item-text">
+                                                    <h3>Review</h3>
+                                                    <p> {{ walletReview.review }} </p>
+                                                    <p> - {{ walletReview.first_name }} {{ walletReview.last_name }}</p>
+                                                </div>
+                                            </md-list-item>
+
+                                        </md-list>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+
+                            <!---------------- TOP RIGHT / NAV ---------------->
+
+                            <div flex-xs="" flex-gt-xs="50" layout="column">
+                                <md-card id="top-right" md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span class="md-headline" id="top-right-hl">Profile Navigation</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <!-- <p>{{ user.first_name }} {{ user.last_name }}'s Profile Page<br> Username: {{ user.username }}<br> Email:
+                                {{ user.email }}</p> -->
+                                        <md-card-actions layout="row" layout-align="center center">
+                                            <md-button class="md-raised md-primary">Wallets</md-button>
+                                            <md-button class="md-accent md-raised">Exchanges</md-button>
+                                            <md-button class="md-warn md-raised">Coins</md-button>
+                                        </md-card-actions>
+                                    </md-card-content>
+                                </md-card>
+
+                                <!---------------- POST NEW REVIEW ---------------->
+
+                                <md-card id="bottom-right" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span class="md-headline" id="bottom-right-hl">Review New Wallet</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <div class="code-info">
+                                            <ul class='window sublime'>
+                                                <li><span class='green'>var</span> thingsToConsider <strong>while</strong> (
+                                                    reviewing );</li>
+                                                <li>Ease.of { use } = "<span class='red'>?</span>";</li>
+                                                <li>Security.features = "<span class='red'>?</span>";</li>
+                                                <li>Level.of( anonymity ) = "<span class='red'>?</span>";</li>
+                                                <li><span class='yellow'>Any</span>.<span class='blue'>extra</span> = <span class='green'>services</span>(
+                                                    ? ) {</li>
+                                                <ul class='tab'>
+                                                    <li><span class='green'>if </span>( wallet == "<span class='red'>buy && sell</span>"
+                                                        ) {</li>
+                                                    <ul class='tab'>
+                                                        <li><span class='green'>return</span> "<span class='red'>You can buy && sell from <br> this wallet.</span>"</li>
+                                                    </ul><br>
+                                                    <li>} <span class='green'>else if </span>( wallet features == <br> "
+                                                        <span class='red'> vouchers && gift cards </span>" {
+                                                    </li>
+                                                    <ul class='tab'> <br>
+                                                        <li><span class='green'>return</span> "<span class='red'>Buy discount vouchers<br>&& gift cards from inside this wallet.</span>"</li>
+                                                    </ul><br>
+                                                    <li>}</li>
+                                                    <li class='current-line'>var questions = "<a href='#' class='red'>Get in contact</a>";
+                                                </ul>
+                                            </ul>
+
+                                        </div>
+                                        <BR>
+                                        <md-divider></md-divider>
+                                        <BR>
+                                        <form class="">
+                                            <form action="#">
+                                                <md-input-container>
+                                                    <label>Wallet Name</label>
+                                                    <input type="text" id="walletname" ng-model="review.wallet_name">
+                                                </md-input-container> <br>
+                                                <md-input-container>
+                                                    <label>Review</label>
+                                                    <textarea ng-model="review.review" id="review-textarea"></textarea>
+                                                </md-input-container>
+                                                <p>Rate Wallet</p>
+                                                <div class="star-rating">
+                                                    <fieldset>
+                                                        <input type="radio" id="5" name="5" value="5" ng-model="review.rating" />
+                                                        <label for="5" title="Outstanding">5 stars</label>
+                                                        <input type="radio" id="4" name="4" value="4" ng-model="review.rating" />
+                                                        <label for="4" title="Very Good">4 stars</label>
+                                                        <input type="radio" id="3" name="3" value="3" ng-model="review.rating" />
+                                                        <label for="3" title="Good">3 stars</label>
+                                                        <input type="radio" id="2" name="2" value="2" ng-model="review.rating" />
+                                                        <label for="2" title="Poor">2 stars</label>
+                                                        <input type="radio" id="1" name="1" value="1" ng-model="review.rating" />
+                                                        <label for="1" title="Very Poor">1 star</label>
+                                                    </fieldset>
+                                                </div>
+                                            </form>
+                                            <md-card-actions layout="row" layout-align="center center">
+                                                <a ng-click="postWalletReview(review)">
+                                                    <md-button class="md-raised md-primary">Post Review</md-button>
+                                                </a>
+                                            </md-card-actions>
+                                        </form>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                        </md-content>
+                    </div>
+                </md-content>
+            </md-tab>
+
+            <!-----================----------- TAB THREE: EXCHANGES ----------================------>
+
+            <md-tab label="My Exchanges">
+                <md-content class="md-padding">
+                    <!-- <h1 class="md-display-2"></h1> -->
+                    <div class="carddemoBasicUsage">
+
+                        <!---------------- WALLET DASHBOARD ---------------->
+
+                        <md-content class="md-padding" layout-xs="column" layout="row">
+                            <div flex-xs="" flex-gt-xs="50" layout="column">
+                                <md-card id="top-left" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span id="top-left-hl" class="md-headline">Exchange Dashboard</span>
+                                            <span class="md-subhead">  </span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <p class="top-left-text"><b>{{ user.first_name }} {{ user.last_name }}'s Profile Page</b>
+                                            <br> Username: &nbsp; {{ user.username }}<br> Email: &nbsp; {{ user.email }}</p>
+                                    </md-card-content>
+                                </md-card>
+
+                                <!---------------- MY REVIEWS STREAM ---------------->
+
+                                <md-card id="bottom-left" md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span class="md-headline" id="bottom-left-hl">My Exchange Reviews</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-card-content layout="column" layout-align="space-between">
+                                        <md-list flex="" class="wallet-reviews" ng-repeat="exchangeReview in exchangeReviews">
+                                            <md-divider></md-divider>
+
+                                            <h3> {{ exchangeReview.exchange_name }} </h3>
+
+
+
+                                            <md-subheader class="md-no-sticky">Rated</md-subheader>
+                                            <md-list-item class="md-2-line">
+                                                <img ng-src="" class="md-avatar" alt="">
+                                                <div class="md-list-item-text">
+                                                    <h3>Rated</h3>
+                                                    <p> {{ exchangeReview.rating }} out of 5 </p>
+                                                </div>
+                                            </md-list-item>
+                                            <!-- TODO: {{order.date| date: 'MMM d, y h:mm:ss a'  -->
+
+                                            <md-subheader class="md-no-sticky">Review</md-subheader>
+                                            <md-list-item class="md-3-line md-long-text">
+                                                <img ng-src="" class="md-avatar" alt="">
+                                                <div class="md-list-item-text">
+                                                    <h3>Review</h3>
+                                                    <p> {{ exchangeReview.review }} </p>
+                                                    <p> - {{ exchangeReview.first_name }} {{ exchangeReview.last_name }}</p>
+                                                </div>
+                                            </md-list-item>
+
+                                        </md-list>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+
+                            <!---------------- TOP RIGHT / NAV ---------------->
+
+                            <div flex-xs="" flex-gt-xs="50" layout="column">
+                                <md-card id="top-right" md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span class="md-headline" id="top-right-hl">Profile Navigation</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <!-- <p>{{ user.first_name }} {{ user.last_name }}'s Profile Page<br> Username: {{ user.username }}<br> Email:
+                                                            {{ user.email }}</p> -->
+                                        <md-card-actions layout="row" layout-align="center center">
+                                            <md-button class="md-raised md-primary">Wallets</md-button>
+                                            <md-button class="md-accent md-raised">Exchanges</md-button>
+                                            <md-button class="md-warn md-raised">Coins</md-button>
+                                        </md-card-actions>
+                                    </md-card-content>
+                                </md-card>
+
+                                <!---------------- POST NEW REVIEW ---------------->
+
+                                <md-card id="bottom-right" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch="">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                            <span class="md-headline" id="bottom-right-hl">Review New Exchange</span>
+                                            <span class="md-subhead"></span>
+                                        </md-card-title-text>
+                                    </md-card-title>
+                                    <md-divider></md-divider>
+                                    <md-card-content>
+                                        <div class="code-info">
+                                            <ul class='window sublime'>
+                                                <li><span class='green'>var</span> thingsToConsider <strong>while</strong> (
+                                                    reviewing );</li>
+                                                <li>Ease.of { use } = "<span class='red'>?</span>";</li>
+                                                <li>Security.features = "<span class='red'>?</span>";</li>
+                                                <li>Level.of( anonymity ) = "<span class='red'>?</span>";</li>
+                                                <li><span class='yellow'>Any</span>.<span class='blue'>extra</span> = <span class='green'>services</span>(
+                                                    ? ) {</li>
+                                                <ul class='tab'>
+                                                    <li><span class='green'>if </span>( wallet == "<span class='red'>buy && sell</span>"
+                                                        ) {</li>
+                                                    <ul class='tab'>
+                                                        <li><span class='green'>return</span> "<span class='red'>You can buy && sell from <br> this wallet.</span>"</li>
+                                                    </ul><br>
+                                                    <li>} <span class='green'>else if </span>( wallet features == <br> "
+                                                        <span class='red'> vouchers && gift cards </span>" {
+                                                    </li>
+                                                    <ul class='tab'> <br>
+                                                        <li><span class='green'>return</span> "<span class='red'>Buy discount vouchers<br>&& gift cards from inside this wallet.</span>"</li>
+                                                    </ul><br>
+                                                    <li>}</li>
+                                                    <li class='current-line'>var questions = "<a href='#' class='red'>Get in contact</a>";
+                                                </ul>
+                                            </ul>
+
+                                        </div>
+                                        <BR>
+                                        <md-divider></md-divider>
+                                        <BR>
+                                        <form class="">
+                                            <form action="#">
+                                                <md-input-container>
+                                                    <label>Exchange Name</label>
+                                                    <input type="text" id="walletname" ng-model="review.wallet_name">
+                                                </md-input-container> <br>
+                                                <md-input-container>
+                                                    <label>Review</label>
+                                                    <textarea ng-model="review.review" id="review-textarea"></textarea>
+                                                </md-input-container>
+                                                <p>Rate Exchange</p>
+                                                <div class="star-rating">
+                                                    <fieldset>
+                                                        <input type="radio" id="5" name="5" value="5" ng-model="review.rating" />
+                                                        <label for="5" title="Outstanding">5 stars</label>
+                                                        <input type="radio" id="4" name="4" value="4" ng-model="review.rating" />
+                                                        <label for="4" title="Very Good">4 stars</label>
+                                                        <input type="radio" id="3" name="3" value="3" ng-model="review.rating" />
+                                                        <label for="3" title="Good">3 stars</label>
+                                                        <input type="radio" id="2" name="2" value="2" ng-model="review.rating" />
+                                                        <label for="2" title="Poor">2 stars</label>
+                                                        <input type="radio" id="1" name="1" value="1" ng-model="review.rating" />
+                                                        <label for="1" title="Very Poor">1 star</label>
+                                                    </fieldset>
+                                                </div>
+                                            </form>
+                                            <md-card-actions layout="row" layout-align="center center">
+                                                <a ng-click="postExchangeReview(review)">
+                                                    <md-button class="md-raised md-primary">Post Review</md-button>
+                                                </a>
+                                            </md-card-actions>
+                                        </form>
+                                    </md-card-content>
+                                </md-card>
+                            </div>
+                        </md-content>
+                    </div>
+
+                </md-content>
+            </md-tab>
+
+        </md-tabs>
+    </md-content>
+
+</div>
+
+
+<!-- <div class="test-wrapper"> -->
+<!-- <md-content class="md-padding">
+            <div layout="column" layout-gt-xs="row">
+                <md-card flex flex-gt-xs="30">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span id="top-left-hl" class="md-headline">Wallet Dashboard</span>
+                            <span class="md-subhead"></span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>Some content</p>
+                    </md-card-content>
+                </md-card> -->
+<!-- <md-card flex>
+            <md-card-title>
+                <md-card-title-text>
+                    <span id="top-left-hl" class="md-headline">Wallet Dashboard</span>
+                    <span class="md-subhead">
+                            {{ user.first_name }} {{ user.last_name }}'s Profile Page</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>Username: {{ user.username }}</p>
+                <p>Email: {{ user.email }}</p>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline" id="bottom-right-hl">Review New Wallet</span>
+                        <span class="md-subhead"></span>
+                    </md-card-title-text>
+
+                </md-card-title>
+                <md-input-container>
+                    <label>Wallet Name</label>
+                    <input type="text" id="walletname" ng-model="review.wallet_name">
+                </md-input-container>
+
+                <md-card-content>
+                    <form class="">
+                        <form action="#">
+                            <p>Rate Wallet</p>
+                            <div class="star-rating">
+                                <fieldset>
+                                    <input type="radio" id="5" name="5" value="5" ng-model="review.rating" /><label for="5"
+                                        title="Outstanding">5 stars</label>
+                                    <input type="radio" id="4" name="4" value="4" ng-model="review.rating" /><label for="4"
+                                        title="Very Good">4 stars</label>
+                                    <input type="radio" id="3" name="3" value="3" ng-model="review.rating" /><label for="3"
+                                        title="Good">3 stars</label>
+                                    <input type="radio" id="2" name="2" value="2" ng-model="review.rating" /><label for="2"
+                                        title="Poor">2 stars</label>
+                                    <input type="radio" id="1" name="1" value="1" ng-model="review.rating" /><label for="1"
+                                        title="Very Poor">1 star</label>
+                                </fieldset>
+                            </div>
+                        </form>
+                        <md-input-container>
+                            <label>Review</label>
+                            <textarea ng-model="review.review" id="review-textarea"></textarea>
+                        </md-input-container>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <a ng-click="postWalletReview(review)"><md-button>Post Review</md-button></a>
+                </md-card-actions>
+                </form>
+            </md-card-content>
+        </md-card>
+    </div>
+    </md-content>
+
+    <div>
+        <p class="good" hide-gt-xs>Using <b>&lt;div layout="column" layout-gt-xs="row"&gt;</b> </p>
+        <p class="warn" hide show-gt-xs>
+            Using <b>&lt;div layout="column" layout-gt-xs="row"&gt;</b>
+            <br/>
+            
+        </p>
+    </div> -->
+
+<!-- <md-content class="md-padding">
+            <div layout="row" layout-xs="column">
+                <md-card flex flex-gt-xs="30"> -->
+<!-- <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline" id="bottom-right-hl">Review New Wallet</span>
+                            <span class="md-subhead"></span>
+                        </md-card-title-text> -->
+
+<!-- </md-card-title>
+                    <md-input-container>
+                        <label>Wallet Name</label>
+                        <input type="text" id="walletname" ng-model="review.wallet_name">
+                    </md-input-container>
+
+                    <md-card-content layout-align="flex-start">
+                        <form class="">
+                            <form action="#">
+                                <p>Rate Wallet</p>
+                                <div class="star-rating">
+                                    <fieldset>
+                                        <input type="radio" id="5" name="5" value="5" ng-model="review.rating" /><label for="5"
+                                            title="Outstanding">5 stars</label>
+                                        <input type="radio" id="4" name="4" value="4" ng-model="review.rating" /><label for="4"
+                                            title="Very Good">4 stars</label>
+                                        <input type="radio" id="3" name="3" value="3" ng-model="review.rating" /><label for="3"
+                                            title="Good">3 stars</label>
+                                        <input type="radio" id="2" name="2" value="2" ng-model="review.rating" /><label for="2"
+                                            title="Poor">2 stars</label>
+                                        <input type="radio" id="1" name="1" value="1" ng-model="review.rating" /><label for="1"
+                                            title="Very Poor">1 star</label>
+                                    </fieldset>
+                                </div>
+                            </form>
+                            <md-input-container>
+                                <label>Review</label>
+                                <textarea ng-model="review.review" id="review-textarea"></textarea>
+                            </md-input-container>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <a ng-click="postWalletReview(review)">
+                            <md-button>Post Review</md-button>
+                        </a>
+                    </md-card-actions>
+                    </form>
+                </md-card> 
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline" id="bottom-left-hl">My Wallet Reviews</span>
+                <span class="md-subhead"></span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <md-list flex="" class="wallet-reviews" ng-repeat="walletReview in walletReviews">
+                <md-divider></md-divider>
+                <md-subheader class="md-no-sticky">
+                    <h3> {{ walletReview.wallet_name }} </h3>
+
+                </md-subheader>
+                <md-subheader class="md-no-sticky">Rated</md-subheader>
+                <md-list-item class="md-2-line">
+                    <img ng-src="" class="md-avatar" alt="">
+                    <div class="md-list-item-text">
+                        <!-- <h3>Rated</h3> -->
+<!-- <p> {{ walletReview.rating }} out of 5 </p>
+                    </div>
+                </md-list-item> -->
+<!-- TODO: {{order.date| date: 'MMM d, y h:mm:ss a' -->
+
+<!-- <md-subheader class="md-no-sticky">Review</md-subheader>
+                <md-list-item class="md-3-line md-long-text">
+                    <img ng-src="" class="md-avatar" alt="">
+                    <div class="md-list-item-text"> -->
+<!-- <h3>Review</h3> -->
+<!-- <p> {{ walletReview.review }} </p>
+                        <p> - {{ walletReview.first_name }} {{ walletReview.last_name }}</p> -->
+<!-- </div>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>
+</md-content>
+
+<div>
+    <p class="good">Using <b>&lt;div layout='row' layout-xs="column" &gt;</b></p>
+</div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <md-radio-group ng-model="review.rating"> 
+                                    <md-radio-button ng-value="1" id="1" role="radio" aria-label="1" class="">
+                                        <div class="md-label">
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                        </div>
+                                    </md-radio-button>
+
+                                    <md-radio-button ng-value="2" id="2" role="radio" aria-label="2" class="">
+                                        <div class="md-label">
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                        </div>
+                                    </md-radio-button>
+
+                                    <md-radio-button ng-value="3" id="3" role="radio" aria-label="3" class="">
+                                        <div class="md-label">
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                        </div>
+                                    </md-radio-button>
+
+                                    <md-radio-button ng-value="4" id="4" role="radio" aria-label="4" class="">
+                                        <div class="md-label">
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" class="ng-scope material-icons" role="img" aria-label="star_rate">star_rate</md-icon>
+                                        </div>
+                                    </md-radio-button>
+
+                                    <md-radio-button ng-value="5" id="5" role="radio" aria-label="5" class="">
+                                        <div class="md-label">
+                                            <md-icon id="star" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" role="img" aria-label="star_rate">star_rate</md-icon>
+                                            <md-icon id="star" role="img" aria-label="star_rate">star_rate</md-icon>
+                                        </div>
+                                    </md-radio-button>
+                              </md-radio-group>  -->

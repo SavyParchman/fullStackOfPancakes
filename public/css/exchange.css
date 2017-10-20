@@ -1,0 +1,227 @@
+/* <!---------------- EXCHANGES CSS ----------------> */
+
+.exchange-view {
+  margin-top: 50px;
+  font-family: "Raleway", sans-serif;
+}
+
+.exchange-table {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 10px 40px 50px;
+  background: #fff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.exchange-title {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+#filter {
+  margin-bottom: 1em;
+}
+.pagination {
+  margin: 0 0 1em;
+}
+
+.exchange-pagination > li > a:focus,
+.exchange-pagination > li > a:hover,
+.exchange-pagination > li > span:focus,
+.exchange-pagination > li > span:hover {
+  z-index: 3;
+  background-color: mintcream;
+  border-color: black;
+  color: black;
+}
+
+.exchange-pagination > li.active > a,
+.exchange-pagination > li.active > a:focus,
+.exchange-pagination > li.active > a:hover {
+  border-color: black;
+  background-color: mintcream;
+  color: black;
+}
+
+.table {
+  font-size: 0.9em;
+  table-layout: fixed;
+}
+th.sortable {
+  cursor: pointer;
+}
+th.sortable:hover,
+th.sortable:focus,
+th.sortable:active {
+  background: mintcream;
+}
+
+.caret-blank {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+.caret-up {
+  border-bottom: 8px solid #333;
+}
+.caret-down {
+  border-top: 8px solid #333;
+}
+
+.exchange-name {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 500;
+  font-size: 1.4em;
+  /* font-variant: small-caps; */
+}
+
+.exchange-rating {
+  font-size: 1.2em;
+}
+
+.exchange-details {
+  font-size: 1.2em;
+}
+
+.rating-container {
+  margin: 0 auto;
+  height: 400px;
+  width: 700px;
+  padding: 50px;
+}
+
+.table-bumper {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100vw;
+  z-index: 5 !important;
+  /* border-bottom: 2px solid #eeeeee; */
+}
+
+.table-bumper-sm {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100vw;
+  border-bottom: 2px solid #eeeeee;
+  z-index: 1 !important;
+}
+
+#exchange-table-text {
+  font-family: "Open Sans", Arial, serif;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.5rem;
+  padding-right: 20px !important;
+}
+
+#header-caps {
+  font-family: "Montserrat", Arial, serif;
+  font-weight: 700;
+  font-size:  12px;
+  text-transform:  uppercase !important;
+  /* margin: 0 0 10px; */
+  letter-spacing:  1px;
+  /* margin-right: -1px; */
+  line-height:  1.2;
+  color:  #222222;
+}
+
+/* .bottom-line:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px solid #eeeeee;
+} */
+
+.bottom-line:after {
+  content: "";
+  display: block;
+  width: 35px;
+  border-bottom: 2px solid #385dc1;
+  margin: 20px auto 25px 0;
+  z-index: 1;
+  position: relative;
+}
+
+.divider-line {
+  display: block;
+  background: #385dc1;
+  content: " ";
+  margin: 0 auto;
+  opacity: 0.7;
+  height: 3px;
+  width: 235px;
+}
+
+#text-highlighted-black {
+  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+  padding: 2px;
+  white-space: pre-wrap;
+  word-spacing: -1px;
+  font-family: "Montserrat", Arial, serif;
+  font-weight: 700;
+  font-size:  26px;
+  line-height:   1.2;
+  letter-spacing: 2px;
+}
+
+#subhead-black {
+  text-transform: uppercase;
+  /* background-color: #000;  */
+  color: #000;
+  padding: 2px;
+  white-space: pre-wrap;
+  word-spacing: -1px;
+  font-family: "Montserrat", Arial, serif;
+  font-weight: 700;
+  font-size:  18px;
+  line-height:   1.2;
+  letter-spacing: 2px;
+}
+
+#inner-nav {
+  font-family: "Open Sans", Arial, serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: 20px;
+  font-weight: 400;
+  font-size: 11px;
+  display: block;
+  /* padding: 33px 15px; */
+  color: #999;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+/* 
+.inner-nav > li > a {
+  font-family: "Open Sans", Arial, serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: 20px;
+  font-weight: 400;
+  font-size: 11px;
+  display: block;
+  padding: 33px 15px;
+  color: #999;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+} */
+
+.exchange-logo {
+  width:90px;
+}

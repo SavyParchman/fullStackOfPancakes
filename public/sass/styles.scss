@@ -1,0 +1,798 @@
+
+// ==================================================
+// SASS TOOLBOX - below - does not generate any code
+//
+
+%resetList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+@mixin visuallyhidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+%visuallyhidden {
+  @include visuallyhidden();
+}
+
+// ==================================================
+// z-index Management
+//
+// Source: https://medium.com/alistapart/sassier-z-index-management-for-complex-layouts-4540717a9488
+
+$z-indexes: (
+    main: (
+        foo,
+        bar,
+        tooltip
+    ),
+    header: (),
+    modal: ()
+) !default;
+
+@function z-index($key1, $key2: null) {
+    $map: $z-indexes;
+    $found-index: null;
+    @if (map-has-key($map, $key1)) {
+        $found-index: index(map-keys($map), $key1);
+        @if ($key2) {
+            $map: map-get($map, $key1);
+            $found-index: index($map, $key2);
+        }
+    }
+    @return $found-index;
+}
+
+@function z($key1, $key2: null) {
+    @return z-index($key1, $key2);
+}
+
+
+
+// ==================================================
+// String to number converter
+//
+
+// Source: http://www.sassmeister.com/gist/9fa19d254864f33d4a80
+// http://hugogiraudel.com/2014/01/15/sass-string-to-number/
+
+////
+/// String to number converter
+/// @author Hugo Giraudel
+/// @access private
+////
+
+
+///
+/// Casts a string into a number
+///
+/// @param {String | Number} $value - Value to be parsed
+///
+/// @return {Number}
+///
+@function to-number($value) {
+  @if type-of($value) == 'number' {
+    @return $value;
+  } @else if type-of($value) != 'string' {
+    $_: log('Value for `to-number` should be a number or a string.');
+  }
+  
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+  
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+    
+    @if not (index(map-keys($numbers), $character) or $character == '.') {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+    }
+    
+    @if $character == '.' {
+      $digits: 1; 
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);  
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+  
+  @return if($minus, -$result, $result);;
+}
+
+
+///
+/// Add `$unit` to `$value`
+///
+/// @param {Number} $value - Value to add unit to
+/// @param {String} $unit - String representation of the unit
+///
+/// @return {Number} - `$value` expressed in `$unit`
+///
+@function to-length($value, $unit) {
+  $units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
+  
+  @if not index(map-keys($units), $unit) {
+    $_: log('Invalid unit `#{$unit}`.');
+  }
+  
+  @return $value * map-get($units, $unit);
+}
+
+
+// ==================================================
+// Responsive font-size
+//
+
+// Source: https://codepen.io/eduardoboucas/pen/YXxmwv?editors=0110 
+// https://css-tricks.com/snippets/sass/viewport-sized-typography-minimum-maximum-sizes/
+// 
+// Viewport sized typography with minimum and maximum values
+//
+// @author Eduardo Boucas (@eduardoboucas)
+//
+// @param {Number}   $responsive  - Viewport-based size
+// @param {Number}   $min         - Minimum font size (px)
+// @param {Number}   $max         - Maximum font size (px)
+//                                  (optional)
+// @param {Number}   $fallback    - Fallback for viewport-
+//                                  based units (optional)
+//
+// @example scss - 5vw font size (with 50px fallback), 
+//                 minumum of 35px and maximum of 150px
+//  @include responsive-font(5vw, 35px, 150px, 50px);
+//
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+  
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+  
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+    
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+  
+  @if $fallback {
+    font-size: $fallback;
+  }
+  
+  font-size: $responsive;
+}
+
+
+// ==================================================
+// Font smoothing
+//
+
+@mixin type-fontSmoothing($value: antialiased) {
+    @if $value == antialiased {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
+
+
+// ==================================================
+// unitSize
+//
+// Use this function to set sizes with proportions.
+//
+// @param {String} $multiplier - times the base unit ($base-unit by default)
+// @param {Number} $offset - A value in pixels which will be added to the
+//                  result, can be positive for addition or negative for
+//                  subtraction
+//
+// @return {Number} Value in rem, equal to the number of times the base unit
+//                  plus the offset
+
+$base-unit: 0.8 !default;
+
+@function unitSize($multiplier, $offset: 0) {
+    @return to-number(($base-unit * $multiplier + $offset) + rem);
+}
+
+
+// ==================================================
+// Breakpoints
+//
+
+// Grid breakpoints
+//
+// Define the minimum and maximum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+    xxs: 0, // Extra small screen / phone
+    xs: 320px, // Extra small screen / phone
+    sm: 544px, // Small screen / phone
+    md: 768px, // Medium screen / tablet
+    lg: 992px, // Large screen / desktop
+    xl: 1200px  // Extra large screen / wide desktop
+) !default;
+
+
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 544px, md: 768px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 544px, md: 768px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 544px, md: 768px))
+//    544px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.1.
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 544px, md: 768px))
+//    767px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  @include media-breakpoint-up($name, $breakpoints) {
+    @include media-breakpoint-down($name, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+
+
+
+
+
+/// ==================================================
+/// Function to generate long shadows (because flat is so has-been).
+/// Property-agnostic: works for both `box-shadow` and `text-shadow`.
+/// `cos` and `sin` might need to be polyfilled if Compass or any 
+/// equivalent such as SassyMath is not in use.
+///
+/// @author Hugo Giraudel
+///
+/// @link https://unindented.org/articles/trigonometry-in-sass/ Pure Sass `cos` and `sin`
+///
+/// @param {Direction} $direction
+///     Shadow's direction (angle or keyword)
+/// @param {Length} $length
+///     Shadow's length
+/// @param {Color} $color
+///     Shadow's color
+/// @param {Bool | Color} $fade [false]
+///     Whether or not shadow should fade: 
+///     - `false` means no fading, shadow is `$color`
+///     - `true`  means fading from `$color` to transparent
+///     - a color means fading from `$color` to `$fade`
+/// @param {Number} $shadow-count [100]
+///     Number of computed shadows
+///
+/// @return {List} - List of shadows
+///
+/// @require {function} Compass/helpers/math/cos
+///     http://compass-style.org/reference/compass/helpers/math/#cos
+/// @require {function} Compass/helpers/math/sin
+///     http://compass-style.org/reference/compass/helpers/math/#sin
+///
+/// @example scss - Usage
+/// .foo {
+///   text-shadow: long-shadow(42deg, 1em, #16a085);
+/// }
+/// .bar {
+///   box-shadow: long-shadow(to top left, 150px, hotpink, tomato);
+/// }
+@function long-shadow($direction, $length, $color, $fade: false, $shadow-count: 100) {
+  $shadows: ();
+  $conversion-map: ( 
+    to top: 180deg, 
+    to top right: 135deg, 
+    to right top: 135deg,
+    to right: 90deg,
+    to bottom right: 45deg,
+    to right bottom: 45deg,
+    to bottom: 0deg,
+    to bottom left: 315deg,
+    to left bottom: 315deg,
+    to left: 270deg,
+    to left top: 225deg,
+    to top left: 225deg
+  );
+  
+  @if map-has-key($conversion-map, $direction) {
+    $direction: map-get($conversion-map, $direction);
+  }
+  
+  @for $i from 1 through $shadow-count {
+    $current-step: ($i * $length / $shadow-count);
+    $current-color: if(not $fade, $color, if(type-of($fade) == 'color',  mix($fade, $color, ($i / $shadow-count * 100)), rgba($color, 1 - $i / $shadow-count)));
+    
+    $shadows: append($shadows, (sin(0deg + $direction) * $current-step) (cos(0deg + $direction) * $current-step) 0 $current-color, 'comma');
+  }
+  
+  @return $shadows;
+}
+
+// ==================================================
+// SASS | contains styles for: navbar, colorscheme
+//
+
+// Base
+$c-white: #fff;
+$c-black: #000;
+
+// Navbar
+$c-Navbar: $c-black;
+$c-Navbar-bg: $c-white;
+$l-Navbar-brandOffset-sm: 0.6rem;
+$l-Navbar-menuOffset-sm: 14%;
+$l-Navbar-itemLineHeight: 2.8rem;
+$l-Navbar-itemPaddingX: 1.4rem;
+$l-Navbar-itemPaddingY: 1.6rem;
+$l-Navbar-size: $l-Navbar-itemLineHeight + $l-Navbar-itemPaddingY * 2;
+
+// Toggle button
+$c-Toggle-bg: transparent;
+$c-Toggle-bar: $c-black;
+$l-Toggle-size: $l-Navbar-size;
+$l-Toggle-radius: 100%;
+$l-Toggle-barWidth: 2.1rem;
+$l-Toggle-barHeight: 0.2rem;
+$l-Toggle-barSpacing: 0.7rem;
+
+// Social links
+$l-socialLink-iconSize: unitSize(2);
+
+// ==================================================
+// Basic
+//
+
+@at-root {
+  
+  // html {
+  //   box-sizing: border-box;
+  // }
+
+  // *, *:before, *:after {
+  //   box-sizing: inherit;
+  // }
+
+  html {
+    font-size: 62.5%;  
+  }
+
+  #Navbar {  /* (was Body) */
+    font-size: 1.4rem;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+}
+
+
+// ==================================================
+// Global utilities
+//
+
+@at-root {
+  
+  .u-pullRight {
+    float: right;
+  }
+  
+}
+
+
+// ==================================================
+// Toggle
+//
+
+@at-root {
+
+  .Toggle {
+    position: relative;
+    display:  inline-block;
+    width: $l-Toggle-size;
+    height: $l-Toggle-size;
+    padding-top: $l-Toggle-size / 2;
+    border-radius: $l-Toggle-radius;
+    background-color: $c-Toggle-bg;
+    @at-root button#{&} {
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    //   
+    // Bars
+    // .navbar-span WAS span
+
+    .navbar-span {
+      margin: -$l-Toggle-barHeight/2 auto 0;
+      vertical-align: top;
+      transition-duration: 0s;
+      transition-delay: 0.2s;
+
+      // Hide text
+      text-indent: 100%;
+      line-height: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      &,
+      &:before,
+      &:after {
+        display: block;
+        width: $l-Toggle-barWidth;
+        height: $l-Toggle-barHeight;
+        background-color: $c-Toggle-bar;
+      }
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        transition-property: margin, transform;
+        transition-duration: 0.2s;
+        transition-delay: 0.2s, 0s;
+      }
+      &:before {
+        margin-top: -$l-Toggle-barSpacing;
+      }
+      &:after {
+        margin-top: $l-Toggle-barSpacing;
+      }
+    }
+
+    //   
+    // s t a t e :  hover
+    //
+
+    &:hover {
+      .navbar-span {
+        &:before {
+          transform: translateY(-1px);
+        }
+        &:after {
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    //   
+    // s t a t e :  active
+    //   
+
+    &.is-active {
+      .navbar-span {
+        background-color: rgba($c-Toggle-bar,0);
+        transition-delay: 0.2s;
+        &:before,
+        &:after {
+          margin-top: 0;
+          transition-delay: 0s, 0.2s;
+        }
+        &:before {
+          transform: rotate(45deg);
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+}
+
+
+// ==================================================
+// Social icon links
+//
+
+@at-root {
+
+  .SocialLink {
+    color: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.28rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    margin-left: -1px;
+    padding: unitSize(1.5) !important;
+    border: 1px solid rgba(255,255,255,0.06);
+    background-color: $c-Navbar-bg;
+  }
+
+  .SocialLink-icon {
+    display: block;
+    width: $l-socialLink-iconSize;
+    height: $l-socialLink-iconSize;
+    fill: currentColor;
+  }
+  
+  .SocialLink-text {
+    @include visuallyhidden();
+  }
+
+}
+
+
+// ==================================================
+// Navbar
+//
+
+@at-root {
+  
+  body {
+    min-height: 100vh;
+    padding-top: $l-Navbar-size;
+    background-color: #FAFAFA;
+  }
+
+  .Navbar {
+    color: #000000;
+    // border-right: 0.5px solid black;
+    // border-bottom: 0.5px solid black;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: $l-Navbar-itemLineHeight;
+    letter-spacing: 0.28rem;
+    text-transform: uppercase;
+    position: fixed;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #F5F5F5;
+    a:not(.Navbar-toggle) {
+      color: inherit;
+      text-decoration: none;
+    }
+    ul {
+      @extend %resetList;
+    }
+  }
+  
+  .Navbar-brand,
+  .Navbar-menu a,
+  .Navbar-quickLinks a {
+    position: relative; /* ****************** */
+    display: block;
+    z-index: 99999;
+  }
+  
+  .Navbar-brand,
+  .Navbar-quickLinks a {
+    padding: $l-Navbar-itemPaddingY $l-Navbar-itemPaddingX;
+    &:hover {
+      color: #222222;
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  .Navbar-quickLinks {
+    display: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 20px;
+    font-weight: 400;
+    font-size: 11px;
+    display: block;
+    // padding: 33px 15px;
+    font-family: "Open Sans", Arial, serif;
+    color: #999;
+    transition: all 0.3s ease-out;
+  }
+  
+  .Navbar-menu {
+    z-index: 99999;
+    line-height: 1.6rem;
+    position: fixed;
+    top: $l-Navbar-size;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: 0%;
+    overflow-y: auto;
+    visibility: hidden;
+    padding: unitSize(3) 0;
+    background-color: rgba($c-Navbar-bg, 0.92);
+    opacity: 0;
+    transition-property: opacity, visibility, width;
+    transition-duration: 0.35s, 0.25s, 0.25s;
+    transition-delay: 0.1s;
+    .Navbar-menu-major {
+      
+      z-index: 99999;
+      flex-grow: 1;
+    }
+    &.is-active {   
+      z-index: 99999;
+      opacity: 1;
+      visibility: visible;
+      width: 100%;
+      transition-duration: 0.15s, 0.25s, 0.25s;
+    }
+  }
+  
+  .Navbar-menu-major a,
+  .Navbar-menu-minor a,
+  .Navbar-menu-minor .Navbar-menu-social {
+    padding: $l-Navbar-itemPaddingY $l-Navbar-menuOffset-sm;
+    z-index: 99999999;
+    position: relative;
+  }
+  
+  .Navbar-menu-major {
+    position: relative;
+    z-index: 99999;
+    font-size: 1.4rem;
+    a { z-index: 99999;
+      position: relative;
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(white, 0.06);
+      }
+    }
+  }
+  
+  .Navbar-menu-minor {
+    color: darken($c-Navbar, 60%);
+    margin-top: $l-Navbar-itemPaddingX;
+    a {
+      padding-top: $l-Navbar-itemPaddingX / 2;
+      padding-bottom: $l-Navbar-itemPaddingX / 2;
+      &:hover {
+        color: $c-Navbar;
+      }
+    }
+  }
+  
+  .Navbar-menu-social {
+    overflow: hidden;
+    li {
+      float: left;
+    }
+  }
+}
+
+
+// ==================================================
+// Breakpoints
+// ==================================================
+
+@include media-breakpoint-up(sm) {
+  
+  .u-Navbar-hidden\@sm-up {
+    display: none;
+  }
+  
+  body {
+    padding-top: 0;
+    padding-left: $l-Navbar-size;
+  }
+  
+  .Navbar {
+    // border-bottom: 0.5px solid black;
+    bottom: 0;
+    width: $l-Navbar-size;
+  }
+  
+  .Navbar-toggle {
+    position: absolute;
+    top: 0;
+  }
+  
+  .Navbar-menu {
+    top: 0;
+    left: $l-Navbar-size;
+    padding-top: $l-Navbar-size - ($l-Navbar-itemPaddingX - $l-Navbar-brandOffset-sm);
+    &.is-active {
+      width: 26rem;
+    }
+  }
+  
+  .Navbar-brand {
+    position: absolute;
+    top: $l-Navbar-size;
+    right: 0;
+    padding-left: $l-Navbar-brandOffset-sm !important;
+    padding-right: $l-Navbar-brandOffset-sm !important;
+    transform: rotate(-90deg) translateY(-$l-Navbar-size);
+    transform-origin: right top;
+  }
+  
+  .Navbar-quickLinks {
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    padding-left: $l-Navbar-itemPaddingY !important;
+    transform: rotate(-90deg) translateX(-$l-Navbar-size);
+    transform-origin: 0 0;
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+
+
+
+
+

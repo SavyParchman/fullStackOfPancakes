@@ -1,0 +1,163 @@
+<!---------------- WALLET TEMPLATE ---------------->
+
+<section class="wallet-view">
+<div class="table-bumper">
+  <span id="subhead-black"> Coinclude CryptoCommunity <h1 id="text-highlighted-black"> <span style="color: #c8e1ff;">Wallet Reviews </span></h1><svg class="coin-wallet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path id="wallet-path" d="M85.001,31.683v32.244c0,1.03-0.835,1.864-1.864,1.864s-1.864-0.835-1.864-1.864v-30.38H32.631  c-1.132,0.034-2.247,0.379-3.225,0.999c-0.995,0.63-1.815,1.524-2.373,2.583c-0.558,1.06-0.823,2.237-0.766,3.404  c0.057,1.171,0.438,2.332,1.103,3.356c0.664,1.025,1.568,1.846,2.614,2.376c0.015,0.008,0.028,0.017,0.043,0.025  c0.015,0.008,0.03,0.014,0.045,0.023l24.047,13.851c0.578,0.333,0.934,0.949,0.934,1.615v31.978c0,0.668-0.357,1.285-0.937,1.617  c-0.287,0.165-0.608,0.247-0.928,0.247c-0.325,0-0.65-0.085-0.941-0.255L15.148,73.671c-0.572-0.334-0.923-0.947-0.923-1.609V29.359  c0-0.666,0.355-1.281,0.932-1.614L52.256,6.325c0.577-0.333,1.287-0.333,1.864,0c0.577,0.333,0.932,0.948,0.932,1.614v14.12  
+    c0,1.03-0.835,1.864-1.864,1.864c-1.029,0-1.864-0.835-1.864-1.864V11.168L17.953,30.435v40.557l33.371,19.515v-27.65l-23.091-13.3  
+    c-1.604-0.828-2.984-2.084-3.992-3.639c-1.022-1.576-1.609-3.375-1.698-5.203c-0.089-1.832,0.323-3.673,1.191-5.323  
+    c0.861-1.635,2.132-3.016,3.676-3.995c1.554-0.985,3.334-1.53,5.147-1.577c0.016,0,0.032-0.001,0.048-0.001h50.532  
+    C84.166,29.819,85.001,30.654,85.001,31.683z M79.752,76.851c0-5.203-4.233-9.436-9.436-9.436c-5.203,0-9.436,4.233-9.436,9.436  
+    c0,5.203,4.233,9.436,9.436,9.436C75.519,86.287,79.752,82.054,79.752,76.851z M76.024,76.851c0,3.147-2.561,5.708-5.708,5.708  
+    s-5.708-2.561-5.708-5.708s2.561-5.708,5.708-5.708S76.024,73.704,76.024,76.851z M64.062,63.717  
+    c2.686-2.686,4.165-6.257,4.165-10.055c0-3.798-1.479-7.369-4.165-10.055c-2.686-2.686-6.257-4.165-10.055-4.165  
+    c-3.798,0-7.369,1.479-10.055,4.165c-0.728,0.728-0.728,1.908,0,2.636c0.728,0.728,1.908,0.728,2.636,0  
+    c1.982-1.982,4.616-3.073,7.419-3.073c2.802,0,5.437,1.091,7.419,3.073c1.982,1.982,3.073,4.616,3.073,7.419  
+    c0,2.802-1.091,5.437-3.073,7.419c-0.728,0.728-0.728,1.908,0,2.636c0.364,0.364,0.841,0.546,1.318,0.546  
+    C63.221,64.263,63.698,64.081,64.062,63.717z"></path></svg><br></span>
+</div>
+<!-- <div ng-repeat="user in users">
+{{ user.username }}
+</div> -->
+<div class="table-bumper-sm"><div class="divider-line"></div></div>
+<!-- <md-card style="margin:0px">
+    <md-input-container style="margin:15px;">
+        <label>Filter by search</label>
+        <input type="text" ng-model="filterName">
+    </md-input-container>
+
+    <div ng-hide="true">
+        {{(filteredItems = (allReviews | filter: filterName))}}
+    </div>
+    <mdt-table mdt-row="{
+      'data': filteredItems
+      }">
+</md-card> -->
+  <md-table-container>
+    <table md-table>
+      <thead md-head md-order="default.order">
+        <tr md-row animate-sort-icon="true">
+          <th md-column md-numeric md-order-by="id" id="header-caps"></th>
+          <th md-column md-order-by="name" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Wallet Name</span><md-icon>account_balance_wallet</md-icon></th>
+          <th md-column md-numeric md-order-by="rating" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Rating</span><md-icon>star_rate</md-icon></th>
+          <th md-column md-order-by="review" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Review</span><md-icon>assignment</md-icon></th>
+          <th md-column md-order-by="username" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Posted by</span><md-icon></md-icon></th>
+         <!-- <th md-column md-order-by="comment"><md-icon>comments</md-icon><span>Comments</span></th> -->
+      </thead>
+      </tr>
+      <tbody md-body>
+        <tr md-row ng-repeat="review in allReviews | orderBy:default.order">
+          <td md-cell id="wallet-table-text"> {{ review.id }} </td>
+          <td md-cell id="header-caps" class="bottom-line"><span style="text-transform: uppercase; font-size:12px !important;"> {{ review.wallet_name }} </span></td>
+          <td md-cell id="wallet-table-text"> {{ review.rating }} / 5 </td>
+          <td md-cell id="inner-nav"> {{ review.review }} </td>
+          <td md-cell><span id="header-caps" style="text-transform: uppercase; color: #737373; font-size:12px !important;">User:</span><span id="inner-nav"> {{ review.username }} </span></td>
+          <!-- <td md-cell ng-click="editInput($event,detail)">{{walletReview.comment ||"Enter some Input"}}</td>  -->
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+
+
+  <!-- <main class="wallet-table">
+      <h1 class="wallet-title">Wallets</h1><br>
+      
+      <input id="filter" type="text" placeholder="Search" class="form-control" ng-model="filterTable">
+  
+      <uib-pagination class="wallet-pagination" total-items="(wallets | filter:filterTable).length" ng-model="currentPage" ng-change="updatePageIndexes()" 
+        max-size="maxPaginationSize" items-per-page="itemsPerPage" boundary-links="true" 
+          previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+      </uib-pagination> 
+
+      <p> The table has two data fields in certain columns. You can sort by either of those fields. </p> 
+  
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+
+      <th class="sortable" style="width: 10%" ng-click="singleSort('id')">
+          ID <span class="caret-blank" ng-class="{'caret-down':sortDescend('id'), 'caret-up':sortAscend('id')}"></span>
+        </th> 
+
+      <th class="sortable" style="width: 15%" ng-click="singleSort('wallet_name')">
+        Name <span class="caret-blank" ng-class="{'caret-down':sortDescend('wallet_name'), 'caret-up':sortAscend('wallet_name')}"></span>
+      </th>
+  
+      <th class="sortable" style="width: 25%" ng-click="doubleSort('rating','review')" data-uib-tooltip="{{ sortTooltip('rating','review') }}" data-tooltip-append-to-body="true">
+        Reviews - Rating <span class="caret-blank" ng-class="{'caret-down':sortDescend('rating','review'), 'caret-up':sortAscend('rating','review')}"></span>
+      </th>
+  
+      <th class="sortable" style="width: 35%" ng-click="singleSort('walletsecrating')">
+        ... <span class="caret-blank" ng-class="{'caret-down':sortDescend('walletsecrating'), 'caret-up':sortAscend('walletsecrating')}"></span>
+      </th>
+  
+    <tr>
+  </thead>
+    <tbody>
+      <tr class="wallet-row" ng-repeat="walletReview in walletReviews | orderBy:[filterSort, sortType, secondSortType, thirdSortType]"
+         ng-show="(filterSort(walletReview) == 1) && ($index >= firstIndex) && ($index < lastIndex)">
+        <td class="table-row-index">
+          {{ walletReview.id }}
+        </td>
+  
+        <td class="wallet-name">
+          {{ walletReview.wallet_name }}
+        </td>
+  
+        <td class="wallet-reviewsRating">
+
+          
+
+
+        <p class="wallet-rating">
+            Rating: {{ walletReview.rating }} / 5  <br>
+        
+           </p>
+           </td>
+
+
+  
+        <td class="walletsecrating">
+
+            <p class="wallet-rating">
+                Rating: {{ walletReview.review }}
+               </p> -->
+
+
+  <!-- </td>
+  
+       
+        <td class="walleteaserating">
+
+<BR> -->
+  <!-- <div class="review-collapse">
+                <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Rate this Wallet</button>
+                  <div uib-collapse="isCollapsed">
+                    <div class="well well-lg">
+                      
+                        <p class="review-details">
+                     SOME CONTENT
+                        </p>
+
+                    </div>
+                  </div>
+              </div> -->
+
+
+  <!-- {{ wallet.walleteaserating }} -->
+  <!-- </td>  -->
+
+  <!-- <td class="walletesrating">
+          {{ wallet.walletesrating }}
+        </td> -->
+
+  <!-- </tr>
+    </tbody>
+</table> 
+      
+</main> -->
+
+
+
+
+</section>

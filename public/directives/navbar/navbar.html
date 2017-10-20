@@ -1,0 +1,112 @@
+<!---------------- NAVBAR TEMPLATE ---------------->
+<nav id="Navbar" class="Navbar">
+    <a href="" id="toggle" class="Toggle Navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-span"></span></a>
+    
+    <a class="Navbar-brand u-pullRight" ui-sref="home">Coinclude</a>
+    
+    <div id="navbarCollapse" class="Navbar-menu auto">
+      <ul class="Navbar-menu-major" ng-hide="loggedIn">
+        <li><a data-toggle="collapse" data-target="#navbarCollapse" ui-sref="home">Home</a></li>
+        <li><a data-toggle="collapse" data-target="#navbarCollapse" ui-sref="createProfile" name="register">Register</a></li>
+        <li><a ui-sref="login" name="login">Login</a></li>
+      </ul>
+      <ul class="Navbar-menu-major" ng-show="loggedIn">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ng-click='loggedin = !logged' ui-sref="home">Log Out</a></li>
+          <li><a ui-sref="profile({ id: user.user_id })" name="login">Profile</a></li>
+      </ul>
+      <div class="Navbar-menu-minor">
+        <ul>
+          <li><a href="#link">About</a></li>
+          <li><a href="#link">Contact</a></li>
+        </ul>
+        <!-- <ul class="Navbar-menu-social u-Navbar-hidden@sm-up">  
+          <li>
+            <a class="SocialLink" href="#link">
+              <svg class="SocialLink-icon"><use xlink:href="#facebook" /></svg>
+              <span class="SocialLink-text">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a class="SocialLink" href="#link">
+              <svg class="SocialLink-icon"><use xlink:href="#twitter" /></svg>
+              <span class="SocialLink-text">Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a class="SocialLink" href="#link">
+              <svg class="SocialLink-icon"><use xlink:href="#instagram" /></svg>
+              <span class="SocialLink-text">Instagram</span>
+            </a>
+          </li>
+        </ul> -->
+      </div>
+    </div>
+      
+    <ul class="Navbar-quickLinks" ng-show="loggedIn">  
+      <li><a ng-click='loggedin = !logged' ui-sref="home">Log Out</a></li>
+      <li><a ui-sref="profile({ id: user.user_id })" name="profile">Profile</a></li>
+      <li><a ui-sref="wallet" name="wallet">Wallets</a></li>
+      <li><a ui-sref="exchange" name="exchanges">Exchanges</a></li>
+    </ul>
+    <ul class="Navbar-quickLinks" ng-hide="loggedIn">  
+        <li><a ui-sref="login" name="login">Log In</a></li>
+        <li><a ui-sref="createProfile" name="register">Register</a></li>
+        <li><a ui-sref="wallet" name="wallet">Wallets</a></li>
+        <li><a ui-sref="exchange" name="exchanges">Exchanges</a></li>
+    </ul>
+
+  </nav>
+
+<!--- $(el).toggleClass(className); 
+( JQUERY ABOVE - JS BELOW)
+if (el.classList) {
+  el.classList.toggle(className);
+} else {
+  var classes = el.className.split(' ');
+  var existingIndex = classes.indexOf(className);
+
+  if (existingIndex >= 0)
+    classes.splice(existingIndex, 1);
+  else
+    classes.push(className);
+
+  el.className = classes.join(' ');
+} -->
+
+
+<script>
+  $('#toggle').click(function() {
+    $(this).toggleClass('is-active');
+    $('#navbarCollapse').toggleClass('is-active');
+  });
+</script>
+
+<!-- <md-content class="md-padding">
+  <md-nav-bar ng-hide='loggedIn' md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+  
+        <md-nav-item md-nav-sref="home" id="pc">Coinclude</md-nav-item>
+  
+        <span flex></span>
+
+        <md-nav-item md-nav-sref="createProfile" name="register">Register</md-nav-item>
+  
+        <md-nav-item md-nav-sref="login" name="login">Login</md-nav-item>
+  
+  </md-nav-bar ng-show='loggedIn'> 
+  <md-nav-bar ng-show='loggedIn' md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+  
+      <md-nav-item md-nav-sref="home" id="pc">Coinclude</md-nav-item>
+      
+            <span flex></span>
+  
+      <md-nav-item md-nav-sref="profile({ id: user.user_id })" name="login">Profile</md-nav-item>
+
+      <md-nav-item mdNavClick='loggedin = !logged' md-nav-sref="home">Log Out</md-nav-item> -->
+      <!-- ****TODO: use window.location.assign or $route.reload() or some other 
+      Angular directive in order to refresh page on click, as of now, user 
+      is "logged out" but button still shows as "log out" instead of "login"**** -->
+<!-- 
+    </md-nav-bar ng-hide='loggedIn'>
+  </md-content>  -->
+   

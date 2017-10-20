@@ -1,0 +1,93 @@
+/*<!---------------- CREATE PROFILE CSS ---------------->*/
+
+form {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+.inputdemoErrorsAdvanced .hint {
+  position: absolute;
+  left: 2px;
+  right: auto;
+  bottom: 7px;
+  font-size: 12px;
+  line-height: 14px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  color: grey;
+}
+.inputdemoErrorsAdvanced .hint.ng-hide,
+.inputdemoErrorsAdvanced .hint.ng-enter,
+.inputdemoErrorsAdvanced .hint.ng-leave.ng-leave-active {
+  bottom: 26px;
+  opacity: 0;
+}
+.inputdemoErrorsAdvanced .hint.ng-leave,
+.inputdemoErrorsAdvanced .hint.ng-enter.ng-enter-active {
+  bottom: 7px;
+  opacity: 1;
+}
+.hint {
+  font-size: 12px;
+}
+
+#create-profile {
+  width: 700px;
+  margin: 0 auto;
+}
+
+@media all and (max-width: 600px) {
+  #create-profile {
+    width: 500px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  #create-profile {
+    width: 325px;
+  }
+}
+
+@media all and (max-width: 325px) {
+  #create-profile {
+    width: 280px;
+  }
+}
+
+.demo-card-wide > .mdl-card__title {
+  height: 70px;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.create-profile-wrapper {
+  font-family: "Open Sans", sans-serif;
+  margin: 0 auto;
+  height: 100vh;
+  padding: 20px;
+  background: #fafafa;
+  position: relative;
+}
+
+@media all and (max-width: 600px) {
+  .create-profile-wrapper {
+    padding-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .create-profile-wrapper {
+    padding-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+#create-profile-title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+ 
+} 
+

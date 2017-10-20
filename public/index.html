@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Coinclude</title>
+
+    <!--===== FONTS / ICONS =====-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <!-- ====== Angular Material CSS ======-->
+    <link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css">  
+    <link rel="stylesheet" href="https://material.angularjs.org/1.1.5/docs.css">      
+
+
+    <!-- ====== Data Table CSS ======-->
+    <link rel="stylesheet" href="https://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.css">  
+      
+    <!--====== CUSTOM STYLESHEETS ======-->
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/createProfile.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/wallet.css">
+    <link rel="stylesheet" href="/css/exchange.css">
+    <link rel="stylesheet" href="/css/test.css">
+</head>
+<body>
+<style>
+    navbar {
+        z-index: 99999999;
+        position: relative;
+    }
+    </style>
+<navbar></navbar>
+<ui-view></ui-view>
+
+
+    <!---======= Greensock scripts =======-->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script> -->
+
+    <!---======= JQuery scripts =======-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/2.12.0/ember.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+
+    <!---======= Angular scripts =======-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js"></script> 
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+    <script src=" https://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.js"></script>
+
+
+    <!---======= Custom scripts =======-->
+    <script src="./app.js"></script>
+    <script src="./app.module.js"></script>
+    <script src="./views/createProfile/createProfileService.js"></script>
+    <script src="./views/login/loginService.js"></script>
+    <script src="./views/profile/profileService.js"></script>
+    <script src="./views/home/homeService.js"></script>
+    <script src="./views/createProfile/createProfileCtrl.js"></script>
+    <script src="./views/login/loginCtrl.js"></script>
+    <script src="./views/profile/profileCtrl.js"></script>
+    <script src="./views/home/homeCtrl.js"></script>
+    <script src="./views/wallet/walletCtrl.js"></script>
+    <script src="./views/wallet/walletService.js"></script>
+    <script src="./views/exchange/exchangeCtrl.js"></script>
+    <script src="./views/exchange/exchangeService.js"></script>
+    <script src="./directives/navbar/navbar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!---------------- CREATE PROFILE TEMPLATE ---------------->
+<div class="create-profile-wrapper">
+
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="50" layout="column">
+            <md-card id="create-profile">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span id="create-profile-title" class="md-headline">Create an Account</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+
+                    <form name="userForm">
+
+                        <div layout-gt-sm="row">
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>First Name</label>
+                                <input md-maxlength="30" required="" name="firstname" ng-model="user.first_name" id="first_name" type="text">
+
+                                <div class="hint" ng-if="showHints">Tell us what... </div>
+
+                                <div ng-messages="userForm.name.$error" ng-if="!showHints">
+                                    <div ng-message="required">First Name is required.</div>
+                                    <div ng-message="md-maxlength">Must be less than 30 characters long.</div>
+                                </div>
+                            </md-input-container>
+
+                            <div flex="5" hide-xs="" hide-sm="">
+                                <!-- Spacer //-->
+                            </div>
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Last Name</label>
+                                <input md-maxlength="30" required="" name="lastname" ng-model="user.last_name" id="last_name" type="text">
+
+                                <div class="hint" ng-if="showHints">...we should call you!</div>
+
+                                <div ng-messages="userForm.name.$error" ng-if="!showHints">
+                                    <div ng-message="required">Last Name is required.</div>
+                                    <div ng-message="md-maxlength">Must be less than 30 characters long.</div>
+                                </div>
+                            </md-input-container>
+
+                        </div>
+
+                        <div layout-gt-sm="row">
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Email</label>
+                                <input name="email" ng-model="user.email" id="email" required="" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+
+                                <div class="hint" ng-show="showHints">How can we reach you?</div>
+
+                                <div ng-messages="userForm.email.$error" ng-hide="showHints">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                        Email must be between 10 & 100 characters long & look like an e-mail address.
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+                            <div flex="5" hide-xs="" hide-sm="">
+                                <!-- Spacer //-->
+                            </div>
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Username</label>
+                                <input md-maxlength="20" required="" name="username" ng-model="user.username" id="username" type="text">
+
+                                <!-- <div class="hint" ng-if="showHints">Attached to your posts.</div> -->
+                                <div ng-messages="userForm.name.$error" ng-if="!showHints">
+                                        <div ng-message="required">Username is required.</div>
+                                        <div ng-message="md-maxlength">Must be less than 20 characters long.</div>
+                                    </div>
+
+                            </md-input-container>
+                        </div>
+                        <div layout-gt-sm="row">
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Password</label>
+                                <input md-minlength="6" md-maxlength="26" required="" name="password" ng-model="user.password" id="password" type="password">
+
+                                <!-- <div class="hint" ng-if="showHints"></div> -->
+
+                                <div ng-messages="userForm.name.$error" ng-if="!showHints">
+                                    <div ng-message="required">Password is required.</div>
+                                    <div ng-message="md-maxlength">Password has to be between 4 - 24 characters.</div>
+                                </div>
+                            </md-input-container>
+
+                            <div flex="55" hide-xs="" hide-sm="">
+                                <!-- Spacer //-->
+                            </div>
+                        </div>
+                        <md-card-actions layout="row" layout-align="end end">
+<!--createProfile -//--> <a ng-click="createProfile(user)">
+                            <md-button class="md-fab md-primary md-hue-2">
+                                <md-tooltip md-direction="bottom">Sign Up</md-tooltip>
+                                <md-icon class="material-icons md-light md-48" style="color: cyan;"> fingerprint </md-icon>
+                            </md-button>
+                        </a>
+
+                            <style>
+                                body[dir="rtl"] .hint {
+                                    right: 2px;
+                                    left: auto;
+                                }
+                            </style>
+                            <!-- The Material demos system does not currently 
+allow targeting the body element, so this
+must go here in the HTML. -->
+
+
+        </div>
+        </form>
+        </md-card-content>
+        </md-card-actions>
+        </md-card>
+    </md-content>
+</div>
+
+
+
+
+

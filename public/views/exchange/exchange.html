@@ -1,0 +1,46 @@
+<!---------------- EXCHANGE TEMPLATE ---------------->
+
+<section class="exchange-view">
+    <div class="table-bumper">
+      <span id="subhead-black"> Coinclude CryptoCommunity <h1 id="text-highlighted-black"><span style="color: #c8e1ff;"> Exchange Reviews </span></h1><svg class="exchange-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" x="0px" y="0px"><path d="M63.84,43.2l-3.36-3.36a1,1,0,0,0-1.41,0L49.4,49.51l-5-5a1,1,0,0,0-1.41,0l-3.36,3.36a1,1,0,0,0,0,1.41l9.08,9.08a1,1,0,0,0,1.41,0L63.84,44.62A1,1,0,0,0,63.84,43.2Z"></path><path d="M80,27v9h9V27H85V14H80V10H71v4H66V29.86L50.31,24.73a1,1,0,0,0-.62,0L32,30.51V14H27V10H18v4H13V27H9v9h4v8H9v9h4v8H9v9h9V61H14V53h4V49h9.59A34.69,34.69,0,0,0,37.64,67H21v5H17v9h4v5H34v4h9V86h6v4h9V81H49v4H43V81H34v4H22V81h4V72H22V68H38.71q.79.7,1.62,1.37l9.58,6.47a1.35,1.35,0,0,0,.76.21,1.37,1.37,0,0,0,.77-.22L54,74H66V86h5v4h9V86h5V74h4V65H85V59h4V50H80v9h4v6H80v9h4V85H80V81H71v4H67V73H55.42l5.15-3.67A33.15,33.15,0,0,0,73,43.21V32.87a1,1,0,0,0-.69-1L67,30.18V15h4v4h9V15h4V27ZM17,62v7H10V62ZM50,82h7v7H50V82ZM35,82h7v7H35ZM25,73v7H18V73ZM81,58V51h7v7H81Zm0,15V66h7v7H81Zm-9,9h7v7H72ZM50.83,70.32l-8.08-5.2C36,59.74,32,51.94,32,44.23V36.11l18-5.83,18,5.83v8.12a26.49,26.49,0,0,1-9.84,20.89ZM19,11h7v7H19Zm-5,4h4v4h9V15h4V30.84l-.49.16H18V27H14ZM10,35V28h7v7H10Zm7,17H10V45h7Zm1-4V44H14V36h4V32h9.53a1,1,0,0,0-.53.87V43.21A29.5,29.5,0,0,0,27.41,48ZM79,18H72V11h7Zm9,10v7H81V28Z"></path></svg><br></span>
+    </div>
+
+    <div class="table-bumper-sm"><div class="divider-line"></div></div>
+    <!-- <md-card style="margin:0px">
+        <md-input-container style="margin:15px;">
+            <label>Filter by search</label>
+            <input type="text" ng-model="filterName">
+        </md-input-container>
+    
+        <div ng-hide="true">
+            {{(filteredItems = (allReviews | filter: filterName))}}
+        </div>
+        <mdt-table mdt-row="{
+          'data': filteredItems
+          }">
+    </md-card> -->
+      <md-table-container>
+        <table md-table>
+          <thead md-head md-order="default.order">
+            <tr md-row animate-sort-icon="true">
+              <th md-column md-numeric md-order-by="id" id="header-caps"></th>
+              <th md-column md-order-by="name" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Exchange Name</span><md-icon>transform</md-icon></th>
+              <th md-column md-numeric md-order-by="rating" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Rating</span><md-icon>star_rate</md-icon></th>
+              <th md-column md-order-by="review" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Review</span><md-icon>assignment</md-icon></th>
+              <th md-column md-order-by="review" id="header-caps"><span style="text-transform: uppercase; font-size:12px !important;">Posted by</span><md-icon></md-icon></th>
+             <!-- <th md-column md-order-by="comment"><md-icon>comments</md-icon><span>Comments</span></th> -->
+          </thead>
+          </tr>
+          <tbody md-body>
+            <tr md-row ng-repeat="review in exReviews | orderBy:default.order">
+              <td md-cell id="exchange-table-text"> {{ review.id }} </td>
+              <td md-cell id="header-caps" class="bottom-line"><span style="text-transform: uppercase; font-size:12px !important;"> {{ review.exchange_name }} </span></td>
+              <td md-cell id="exchange-table-text"> {{ review.rating }} / 5 </td>
+              <td md-cell id="inner-nav"> {{ review.review }} </td>
+              <td md-cell><span id="header-caps" style="text-transform: uppercase; color: #737373; font-size:12px !important;">User:</span><span id="inner-nav"> {{ review.username }} </span></td>
+              <!-- <td md-cell ng-click="editInput($event,detail)">{{exchangeReview.comment ||"Enter some Input"}}</td>  -->
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>   
+    </section>

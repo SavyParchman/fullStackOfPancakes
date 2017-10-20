@@ -1,0 +1,134 @@
+/* LOGIN */
+
+#login-card {
+  font-family: "Open Sans", sans-serif;
+  width: 700px;
+  margin: 0 auto;
+}
+
+@media all and (max-width: 600px) {
+  #login-card {
+    width: 500px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  #login-card {
+    width: 325px;
+  }
+}
+
+@media all and (max-width: 325px) {
+  #login-card {
+    width: 280px;
+  }
+}
+
+#login-card > .mdl-card__title {
+  height: 70px;
+}
+#login-card > .mdl-card__menu {
+  color: #fff;
+}
+
+.login-wrapper {
+  margin-top: 70px;
+  height: 100vh;
+  padding: 20px;
+  background: #fafafa;
+  position: relative;
+}
+
+@media all and (max-width: 600px) {
+  .login-wrapper {
+    padding-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .login-wrapper {
+    padding-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+#login-title { 
+  font-weight: 500;
+}
+
+/*-------- HOME --------*/
+
+#home-wrapper {
+  /* margin-left: 200px; */
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #cecece;
+  z-index: 1;
+}
+
+.parent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.child {
+  z-index: 1;
+  text-align: center;
+}
+
+#server {
+  z-index: 1;
+  filter: grayscale(100%);
+  background: #cecece;
+}
+
+.home-svg {
+  padding: 60px;
+  margin: 20px;
+  border: 4px solid #cecece;
+  border-radius: 80px;
+  transition: all 1s ease;
+}
+
+.home-svg:hover {
+  background: #57DB96;
+  border: 4px solid #ff9c00;
+}
+
+.zero, .one, .two, .three, .four {
+  z-index: 1;
+  height: 350px;
+  border-bottom: 1px solid #cecece;
+}
+
+.two {
+
+}
+
+.three {
+
+}
+
+.four {
+
+}
+
+.wallet-option {
+  float: right;
+}
+.hardware-option {
+  float: left;
+}
+.exchange-option {
+  float: right;
+}
+.mining-option {
+  float: left;
+}

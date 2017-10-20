@@ -1,0 +1,245 @@
+.window {
+  font-size: 13px;
+  width: 365px;
+  height: 265px;
+  margin: 0 auto;
+  border-top: 15px solid #b4b4b4;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+@media all and (max-width: 775px) {
+  .window {
+    width: 300px;
+    padding: 0px;
+   }
+}
+
+
+@media all and (max-width: 400px) {
+  .window {
+    height: 255px;
+    width: 295px;
+    padding: 0px;
+    font-size: 8px;
+    letter-spacing: .5;
+  }
+}
+
+@media all and (max-width: 375px) {
+  .window {
+    width: 280px;
+    padding: 0px;
+    font-size: 8px;
+    letter-spacing: .5;
+  }
+}
+
+@media all and (max-width: 775px) {
+  .sublime {
+    font-size:11px;
+    letter-spacing: .5;
+  }
+}
+
+
+@media all and (max-width: 450px) {
+  .sublime {
+    font-size: 10px;
+  }
+}
+
+@media all and (max-width: 325px) {
+  .sublime {
+    padding: 0px;
+    font-size: 8px;
+    letter-spacing: .5;
+  }
+}
+
+.sublime {
+  list-style: none;
+  background: #262728;
+  color: #f1f1f1;
+  font-family: Menlo;
+  font-weight: 100;
+  li {
+    letter-spacing: 1;
+    height: 16px;
+    line-height: 16px;
+  }
+  .tab {
+    margin-left: 2%;
+    list-style: none;
+  }
+  .red {
+    color: #eb5e5b;
+  }
+  .blue {
+    color: #5695bf;
+  }
+  .green {
+    color: #5ae897;
+  }
+  .yellow {
+    color: #f1d35c;
+  }
+}
+
+#profile-page-wrapper {
+  margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+#top-left {
+}
+
+#top-right {
+  padding-bottom: 25px;
+}
+
+#bottom-left {
+}
+
+#bottom-right {
+}
+
+#top-left-hl {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.top-left-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#bottom-left-hl {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#top-right-hl {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#bottom-right-hl {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.wallet-reviews {
+
+}
+
+#walletname {
+ width: 300px;
+ background: rgba(135, 183, 159, 0.1);
+}
+
+#review-textarea {
+  width: 300px;
+  height: 100px !important;
+  background: rgba(135, 183, 159, 0.1);
+}
+
+
+
+
+// .star-rating-container {
+//   text-align: center;
+//   max-width: 600px;
+//   margin: 0 auto;
+//   display: flex;
+//   flex-flow: row wrap;
+//   margin-top: 50px;
+//   display: block;
+// }
+// .rating-review-form {
+//   text-align: center;
+// }
+.star-rating {
+  font-family: "FontAwesome";
+}
+.star-rating > fieldset {
+  border: none;
+  display: inline-block;
+}
+.star-rating > fieldset:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+.star-rating > fieldset:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  color: #16a085;
+}
+.star-rating > fieldset:not(:checked) > label:before {
+  content: "\f006  ";
+}
+.star-rating > fieldset:not(:checked) > label:hover,
+.star-rating > fieldset:not(:checked) > label:hover ~ label {
+  color: #1abc9c;
+  text-shadow: 0 0 3px #1abc9c;
+}
+.star-rating > fieldset:not(:checked) > label:hover:before,
+.star-rating > fieldset:not(:checked) > label:hover ~ label:before {
+  content: "\f005  ";
+}
+.star-rating > fieldset > input:checked ~ label:before {
+  content: "\f005  ";
+}
+.star-rating > fieldset > label:active {
+  position: relative;
+  top: 2px;
+}
+.star-rating p {
+  font-size: 1.6em;
+  margin: auto;
+  width: 80%;
+}
+
+#scroll-up{
+  position: fixed !important;
+  opacity: .6;
+}
+
+#top-of-page {
+  position: fixed;
+  height: 1em;
+  top: -10;
+}
+
+
+/*----- TABS ------- */
+.tabsdemoDynamicHeight md-content {
+  background-color: transparent !important;
+}
+.tabsdemoDynamicHeight md-content md-tabs {
+  background: #f6f6f6;
+  border: 1px solid #e1e1e1;
+}
+.tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+  background: white;
+}
+.tabsdemoDynamicHeight md-content h1:first-child {
+  margin-top: 0;
+}
+
+.center {
+  text-align: center;
+}

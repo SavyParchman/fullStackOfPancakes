@@ -1,0 +1,219 @@
+<!---------------- LOGIN TEMPLATE ---------------->
+
+
+<div class="login-wrapper">
+
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="50" layout="column">
+            <md-card id="login-card">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span id="login-title" class="md-headline">Login</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+
+                    <form name="userForm">
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>First Name</label>
+                                <input required="" class="validate" name="firstname" id="first_name" type="text" class="validate" ng-model="user.first_name">
+                            </md-input-container>
+
+                            <div flex="5" hide-xs="" hide-sm="">
+                                <!-- Spacer //-->
+                            </div>
+                        </div>
+
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Last Name</label>
+                                <input required="" class="validate" name="lastname" id="last_name" type="text" ng-model="user.last_name">
+                            </md-input-container>
+
+                            <div flex="5" hide-xs="" hide-sm="">
+                                <!-- Spacer //-->
+                            </div>
+                        </div>
+
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Password</label>
+                                <input required="" class="validate" name="password" ng-model="user.password" id="password" type="password">
+                            </md-input-container>
+
+                            <div flex="55" hide-xs="" hide-sm="">
+                                <!-- Spacer //-->
+                            </div>
+                        </div>
+                        <md-card-actions layout="row" layout-align="end end">
+                            <!--//===-login(user)-===-//-->
+                            <a ng-click="login(user)">
+                                <md-button class="md-fab md-primary md-hue-2">
+                                    <md-tooltip md-direction="bottom">Login</md-tooltip>
+                                    <md-icon class="material-icons md-light md-48" style="color: mintcream;"> fingerprint </md-icon>
+                                </md-button>
+                            </a>
+
+                            <style>
+                                body[dir="rtl"] .hint {
+                                    right: 2px;
+                                    left: auto;
+                                }
+                            </style>
+                            <!-- The Material demos system does not currently 
+        allow targeting the body element, so this
+        must go here in the HTML. -->
+
+
+        </div>
+        </form>
+        </md-card-content>
+        </md-card-actions>
+        </md-card>
+    </md-content>
+</div>
+
+
+
+
+
+
+
+<!-- <div id='loginPage'>
+        <!-- ng-show=!loggedIn -->
+
+<!-- <div class="login-wrapper"> -->
+<!-- <div id='loginModule'> 
+          <h1 id=logo>Login.</h1>
+          <div id='loginDialog'>
+          <md-tabs class='loginTabs' md-dynamic-height md-no-ink md-stretch-tabs="always">
+    
+            <md-tab class='loginTab' label="Sign In" id="signInTab">
+              <form method="post" action="/login">
+
+                <md-input-container layout-padding><label>First Name</label>
+                  <input name="firstname" id="first_name" type="text" class="validate" ng-model="user.first_name">
+                </md-input-container> 
+
+                <md-input-container layout-padding><label>Last Name</label>
+                        <input name="lastname" id="last_name" type="text" class="validate" ng-model="user.last_name">
+                    </md-input-container> 
+
+                <md-input-container layout-padding><label>Password</label>
+                  <input name="password" id="password" type="password" class="validate" ng-model="user.password">
+                </md-input-container>
+
+                <md-button class='loginBtn' type="submit" id="signInBtn">Sign In</md-button>
+              </form>
+            </md-tab>
+      -->
+<!--         <md-tab class='loginTab' label="Sign Up" id="signUpTab">
+              <md-input-container layout-padding>
+                <label>Email</label>
+                <input ng-model="user.email">
+              </md-input-container>
+              <md-input-container layout-padding>
+                <label>Password</label>
+                <input ng-model="user.password">
+              </md-input-container>
+              <md-input-container layout-padding>
+                <label>Repeat Password</label>
+                <input ng-model="user.repeat">
+              </md-input-container>
+              <span class="passwordMatchMessage" ng-if="user.password==user.repeat && user.repeat">Passwords match!<br></span>
+              <md-button class="loginBtn" id="signUpBtn">Sign Up</md-button>
+            </md-tab> -->
+
+<!-- <md-tab ng-disabled=true> -->
+<!--dummy tab for spacing-->
+<!-- </md-tab>
+    
+    
+            <md-tab class='loginTab' label="Reset" id="resetTab">
+              <md-input-container layout-padding>
+                <label>Email</label>
+                <input ng-model="user.password">
+              </md-input-container>
+              <BR>
+              <md-button class='loginBtn' id="resetBtn">Send Password</md-button>
+            </md-tab>
+    
+          </md-tabs>
+        </div>
+      </div> -->
+<!-- </div> -->
+<!-- </div> -->
+
+
+
+
+
+<!-- 
+
+
+
+<div class="login-wrapper">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 id="login-title" class="mdl-card__title-text">Login</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+
+                 <form action="#">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input validate" id="first_name" type="text" ng-model="user.first_name">
+                <label class="mdl-textfield__label" for="first_name">First Name</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input validate" id="last_name" type="text" ng-model="user.last_name">
+                <label class="mdl-textfield__label" for="last_name">Last Name</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input validate" id="password" type="password" ng-model="user.password">
+                <label class="mdl-textfield__label" for="password">Password</label>
+              </div>     
+                   
+              </form>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                        <a ng-click="login(user)"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+                            Login
+                              </button></a> -->
+<!-- <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+                    Sign Up
+                  </a> -->
+<!-- </div>
+              </div>
+            </div> -->
+
+
+
+<!-- 
+
+  <form class="col s12">
+      <div class="row">
+          <h3>Login</h3>
+          <div class="input-field col s6">
+              <input id="first_name" type="text" class="validate" ng-model="user.first_name">
+              <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate" ng-model="user.last_name">
+              <label for="last_name">Last Name</label>
+          </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12">
+              <input id="password" type="password" class="validate" ng-model="user.password">
+              <label for="password">Password</label>
+          </div>
+      </div>
+      <div>
+          <a ng-click="login(user)" class=""><md-button class="md-raised">Submit</md-button></a>
+
+      </div>
+  </form>        
+</div> -->
