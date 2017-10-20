@@ -23,5 +23,5 @@ massive(process.env.DATABASE_URL).then(dbInstance => {
 
 
 app.listen(process.env.PORT, function(){
-    console.log('Magic is happening on Port: 3000')
+    console.log('Magic is happening')
 })
